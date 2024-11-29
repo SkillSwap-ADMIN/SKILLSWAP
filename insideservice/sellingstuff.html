@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="../pics/logo.png" sizes="16x16">
+
+<link rel="icon" type="image/png" href="../pics/logo.png" sizes="32x32">
+
+<link rel="icon" type="image/png" href="../pics/logo.png" sizes="96x96">
+
+<link rel="apple-touch-icon" href="../pics/logo.png">
+
+    <title>Marketplace - SkillSwap</title>
+
+    <style>
+
+        :root {
+
+            --bg-gradient-light: linear-gradient(to top, violet, white);
+
+            --text-color-light: rgb(75, 75, 75);
+
+            --glass-bg-light: rgba(255, 255, 255, 0.9);
+
+        }
+
+
+
+        body {
+
+            background: var(--bg-gradient-light);
+
+            min-height: 100vh;
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            padding: 20px;
+
+        }
+
+
+
+        .services-container {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            padding: 20px;
+
+        }
+
+
+
+        .service-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+            gap: 20px;
+
+            margin-top: 20px;
+
+        }
+
+
+
+        .service-card {
+
+            background: var(--glass-bg-light);
+
+            border-radius: 15px;
+
+            padding: 20px;
+
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        }
+
+
+
+        .service-media img {
+
+            width: 100%;
+
+            height: 200px;
+
+            object-fit: cover;
+
+            border-radius: 10px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+
+        .order-btn {
+
+            background: rgba(238, 130, 238, 0.6);
+
+            color: white;
+
+            padding: 10px 20px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            width: 100%;
+
+            margin-top: 15px;
+
+        }
+
+
+
+        .order-btn:hover {
+
+            background: rgba(238, 130, 238, 0.8);
+
+        }
+
+
+
+        /* Navigation Styles */
+
+        .navbar {
+
+            background: rgba(255, 255, 255, 0.9);
+
+            padding: 1rem;
+
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+        }
+
+
+
+        .nav-content {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+
+
+        .logo-container {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 1rem;
+
+        }
+
+
+
+        .logo {
+
+            width: 50px;
+
+            height: auto;
+
+        }
+
+
+
+        .nav-links {
+
+            display: flex;
+
+            gap: 2rem;
+
+        }
+
+
+
+        .nav-links a {
+
+            text-decoration: none;
+
+            color: var(--text-color-light);
+
+            font-weight: 500;
+
+            transition: color 0.3s ease;
+
+        }
+
+
+
+        .nav-links a:hover {
+
+            color: violet;
+
+        }
+
+
+
+        /* Hover effects for buttons */
+
+        .order-btn {
+
+            transition: all 0.3s ease;
+
+        }
+
+
+
+        .order-btn:hover {
+
+            background: rgba(238, 130, 238, 0.8);
+
+            transform: translateY(-2px);
+
+        }
+
+
+
+        /* Service card hover effect */
+
+        .service-card {
+
+            transition: transform 0.3s ease;
+
+        }
+
+
+
+        .service-card:hover {
+
+            transform: translateY(-5px);
+
+        }
+
+
+
+        /* Add these new styles to your existing styles */
+
+        .buddy-profile {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+
+        .profile-image {
+
+            width: 60px;
+
+            height: 60px;
+
+            border-radius: 50%;
+
+            object-fit: cover;
+
+        }
+
+
+
+        .profile-info h3 {
+
+            margin: 0;
+
+            font-size: 1.2rem;
+
+        }
+
+
+
+        .service-title {
+
+            margin: 5px 0;
+
+            color: #666;
+
+        }
+
+
+
+        .service-details {
+
+            text-align: left;
+
+        }
+
+
+
+        .description {
+
+            margin: 10px 0;
+
+            line-height: 1.5;
+
+        }
+
+
+
+        .service-categories {
+
+            margin: 10px 0;
+
+        }
+
+
+
+        .service-category {
+
+            background: rgba(238, 130, 238, 0.1);
+
+            padding: 5px 10px;
+
+            border-radius: 15px;
+
+            font-size: 0.9rem;
+
+        }
+
+
+
+        .service-meta {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-top: 15px;
+
+        }
+
+
+
+        .price {
+
+            font-size: 1.2rem;
+
+            font-weight: bold;
+
+            color: #4CAF50;
+
+        }
+
+
+
+        .contact-btn {
+
+            background: linear-gradient(135deg, #fce7ff, #e293f9);
+
+            color: white;
+
+            border: none;
+
+            padding: 8px 16px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            transition: all 0.3s ease;
+
+        }
+
+
+
+        .contact-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+        }
+
+
+
+        .no-services {
+
+            text-align: center;
+
+            color: #666;
+
+            font-style: italic;
+
+            grid-column: 1 / -1;
+
+            padding: 20px;
+
+        }
+
+
+
+        .notification-badge {
+
+            position: absolute;
+
+            top: -8px;
+
+            right: -8px;
+
+            background: red;
+
+            color: white;
+
+            border-radius: 50%;
+
+            padding: 2px 6px;
+
+            font-size: 12px;
+
+            display: none;
+
+        }
+
+
+
+        .expanded-content {
+
+            grid-column: 1 / -1;
+
+            background: var(--glass-bg-light);
+
+            border-radius: 15px;
+
+            padding: 20px;
+
+            margin: 20px 0;
+
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+            animation: slideDown 0.3s ease-out;
+
+        }
+
+
+
+        @keyframes slideDown {
+
+            from {
+
+                opacity: 0;
+
+                transform: translateY(-20px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform: translateY(0);
+
+            }
+
+        }
+
+
+
+        /* Add these styles to your existing CSS */
+
+        .service-card {
+
+            background: rgba(255, 255, 255, 0.9);
+
+            border-radius: 20px;
+
+            padding: 20px;
+
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+            margin: 20px auto;
+
+            max-width: 800px;
+
+        }
+
+
+
+        .slideshow-container {
+
+            position: relative;
+
+            margin-bottom: 20px;
+
+            border-radius: 15px;
+
+            overflow: hidden;
+
+        }
+
+
+
+        .slideshow-image {
+
+            width: 100%;
+
+            height: 400px;
+
+            object-fit: cover;
+
+            border-radius: 15px;
+
+            display: none;
+
+        }
+
+
+
+        .slideshow-image.active {
+
+            display: block;
+
+        }
+
+
+
+        .slide-btn {
+
+            position: absolute;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            background: rgba(255, 255, 255, 0.8);
+
+            border: none;
+
+            width: 40px;
+
+            height: 40px;
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            font-size: 18px;
+
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+
+            z-index: 2;
+
+        }
+
+
+
+        .prev-btn { left: 10px; }
+
+        .next-btn { right: 10px; }
+
+
+
+        .dots-container {
+
+            text-align: center;
+
+            position: absolute;
+
+            bottom: 15px;
+
+            width: 100%;
+
+            z-index: 2;
+
+        }
+
+
+
+        .dot {
+
+            height: 8px;
+
+            width: 8px;
+
+            margin: 0 4px;
+
+            background-color: rgba(255, 255, 255, 0.6);
+
+            border-radius: 50%;
+
+            display: inline-block;
+
+            cursor: pointer;
+
+            transition: background-color 0.3s ease;
+
+        }
+
+
+
+        .dot.active {
+
+            background-color: #FF59F8;
+
+        }
+
+
+
+        .contact-btn {
+
+            background: #FF59F8;
+
+            color: white;
+
+            border: none;
+
+            padding: 10px 25px;
+
+            border-radius: 25px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        }
+
+
+
+        .contact-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 4px 12px rgba(255, 89, 248, 0.3);
+
+        }
+
+
+
+        /* Update these styles for the pink service card */
+
+        .pink-service-card {
+
+            background: rgba(255, 255, 255, 0.2);
+
+            border-radius: 25px;
+
+            padding: 0;
+
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+            margin: 20px auto;
+
+            max-width: 400px;
+
+            overflow: hidden;
+
+            transition: all 0.3s ease;
+
+            backdrop-filter: blur(12px);
+
+            -webkit-backdrop-filter: blur(12px);
+
+        }
+
+
+
+        .pink-service-card:hover {
+
+            transform: translateY(-5px);
+
+            background: rgba(0, 0, 0, 0.7);
+
+            box-shadow: 
+
+                0 8px 25px rgba(0, 0, 0, 0.3),
+
+                0 0 20px rgba(0, 0, 0, 0.2);
+
+        }
+
+
+
+        .service-content {
+
+            background: linear-gradient(
+
+                135deg,
+
+                rgba(255, 229, 255, 0.4),
+
+                rgba(255, 240, 255, 0.2)
+
+            );
+
+            padding: 20px;
+
+            text-align: center;
+
+            backdrop-filter: blur(8px);
+
+            -webkit-backdrop-filter: blur(8px);
+
+            margin-top: 0;
+
+        }
+
+
+
+        .service-title {
+
+            color: rgba(0, 0, 0, 0.8);
+
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.1);
+
+        }
+
+
+
+        .limited-deal {
+
+            font-size: 0.9rem;
+
+            color: #666;
+
+            margin-bottom: 5px;
+
+        }
+
+
+
+        .service-description {
+
+            color: rgba(0, 0, 0, 0.7);
+
+            font-size: 1rem;
+
+            line-height: 1.5;
+
+            margin: 15px 0;
+
+            padding: 0 10px;
+
+        }
+
+
+
+        .price-tag {
+
+            color: rgba(0, 0, 0, 0.9);
+
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
+
+            font-size: 1.5rem;
+
+            font-weight: bold;
+
+            margin: 15px 0;
+
+        }
+
+
+
+        .get-offer-btn {
+
+            background: linear-gradient(
+
+                135deg,
+
+                rgba(255, 89, 248, 0.8),
+
+                rgba(255, 89, 248, 0.6)
+
+            );
+
+            backdrop-filter: blur(4px);
+
+            -webkit-backdrop-filter: blur(4px);
+
+            border: 1px solid rgba(255, 255, 255, 0.3);
+
+            box-shadow: 0 4px 15px rgba(255, 89, 248, 0.3);
+
+            color: white;
+
+            border: none;
+
+            padding: 12px 30px;
+
+            border-radius: 25px;
+
+            font-size: 1.1rem;
+
+            cursor: pointer;
+
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+            width: 80%;
+
+            margin: 10px auto;
+
+            display: block;
+
+        }
+
+
+
+        .get-offer-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 8px 20px rgba(255, 89, 248, 0.4);
+
+            background: linear-gradient(
+
+                135deg,
+
+                rgba(255, 89, 248, 0.9),
+
+                rgba(255, 89, 248, 0.7)
+
+            );
+
+        }
+
+
+
+        /* Add transition for text elements when card is hovered */
+
+        .pink-service-card:hover .service-title,
+
+        .pink-service-card:hover .service-description,
+
+        .pink-service-card:hover .limited-deal,
+
+        .pink-service-card:hover .price-tag {
+
+            color: white;
+
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+        }
+
+
+
+        /* Update the container styles to accommodate two cards */
+
+        .services-container {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            padding: 20px;
+
+        }
+
+
+
+        /* Adjust the pink service card for side-by-side layout */
+
+        .pink-service-card {
+
+            flex: 1;
+
+            min-width: 300px;
+
+            max-width: 400px;
+
+            margin: 20px 10px;
+
+        }
+
+
+
+        /* Update the slideshow image height specifically for the Robux card */
+
+        .pink-service-card:nth-child(3) .slideshow-image {
+
+            width: 100%;
+
+            height: 300px;
+
+            object-fit: cover;
+
+            border-radius: 25px 25px 0 0;
+
+            display: none;
+
+            transition: opacity 0.5s ease-in-out;
+
+        }
+
+
+
+        /* Update slideshow container for smaller images */
+
+        .pink-service-card .slideshow-container {
+
+            background: rgba(255, 255, 255, 0.1);
+
+            height: 200px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 25px 25px 0 0;
+
+            overflow: hidden;
+
+        }
+
+
+
+        /* Update slideshow image size */
+
+        .pink-service-card .slideshow-image {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            border-radius: 25px 25px 0 0;
+
+            display: none;
+
+        }
+
+
+
+        .pink-service-card .slideshow-image.active {
+
+            display: block;
+
+        }
+
+
+
+        /* Update get-offer-btn styles */
+
+        .get-offer-btn {
+
+            background: linear-gradient(45deg, #FF69B4, #FF1493);
+
+            color: white;
+
+            border: none;
+
+            padding: 12px 25px;
+
+            border-radius: 25px;
+
+            font-size: 1em;
+
+            font-weight: 500;
+
+            cursor: pointer;
+
+            transition: all 0.3s ease;
+
+            width: 100%;
+
+            text-align: center;
+
+            margin-top: 10px;
+
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+
+        }
+
+
+
+        .get-offer-btn:hover {
+
+            background: linear-gradient(45deg, #FF1493, #FF69B4);
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+
+        }
+
+
+
+        .pink-service-card .slideshow-container {
+
+            background: rgba(0, 0, 0, 0.1);
+
+            padding: 10px;
+
+            border-radius: 25px 25px 0 0;
+
+        }
+
+        .pink-service-card .slideshow-image.active {
+
+            display: block;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="nav-content">
+
+            <div class="logo-container">
+
+                <img src="/pics/logo.png" alt="SkillSwap Logo" class="logo">
+
+                <h1>SKILLSWAP</h1>
+
+            </div>
+
+            <div class="nav-links">
+
+                <a href="../index.html">Home</a>
+
+                <a href="../service.html">Services</a>
+
+                <a href="../about.html">About</a>
+
+                <a href="../contact.html">Contact</a>
+
+                <div class="user-profile" style="margin-left: 20px; position: relative;">
+
+                    <img src="../pics/default-avatar.png" 
+
+                         alt="Profile" 
+
+                         style="width: 32px; height: 32px; border-radius: 50%; cursor: pointer;"
+
+                         onmouseover="showDropdown()" 
+
+                         onmouseout="hideDropdown()">
+
+                    <div id="profileDropdown" 
+
+                         style="display: none; position: absolute; right: 0; top: 40px; 
+
+                                background: white; padding: 10px; border-radius: 8px; 
+
+                                box-shadow: 0 2px 5px rgba(0,0,0,0.2); min-width: 120px;">
+
+                        <span id="currentUser" style="display: block; margin-bottom: 8px; color: #666;"></span>
+
+                        <button onclick="logout()" 
+
+                                style="background: #ff4444; color: white; border: none; 
+
+                                       padding: 8px 15px; border-radius: 5px; cursor: pointer; 
+
+                                       width: 100%;">
+
+                            Logout
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <div class="services-container">
+
+        <h2>Marketplace Items</h2>
+
+        <!-- Create a flex container for the cards -->
+
+        <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+
+            <!-- First card (crochet card) -->
+
+            <div class="pink-service-card">
+
+                <div class="slideshow-container">
+
+                    <img src="../pics/c1.png" alt="Crochet Design 1" class="slideshow-image active">
+
+                    <img src="../pics/c2.png" alt="Crochet Design 2" class="slideshow-image">
+
+                    <img src="../pics/c3.png" alt="Crochet Design 3" class="slideshow-image">
+
+                    <img src="../pics/c4.png" alt="Crochet Design 4" class="slideshow-image">
+
+                    
+
+                    <button class="slide-btn prev-btn" onclick="changeSlide(-1)">❮</button>
+
+                    <button class="slide-btn next-btn" onclick="changeSlide(1)">❯</button>
+
+                    
+
+                    <div class="dots-container">
+
+                        <span class="dot active" onclick="setSlide(0)"></span>
+
+                        <span class="dot" onclick="setSlide(1)"></span>
+
+                        <span class="dot" onclick="setSlide(2)"></span>
+
+                        <span class="dot" onclick="setSlide(3)"></span>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div class="service-content">
+
+                    <h2 class="service-title">Good for Gifting Ideas</h2>
+
+                    <p class="limited-deal">Limited Time Deal</p>
+
+                    <p class="service-description">
+
+                        Crochet is the art of transforming yarn into beautiful creations with a simple hook and endless imagination.
+
+                    </p>
+
+                    <div class="price-tag">₱100-200 only!</div>
+
+                    <button class="get-offer-btn" onclick="window.location.href='https://www.facebook.com/messages/t/435891166284827'">Get This Offer</button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Second card (new song cover card) -->
+
+            <div class="pink-service-card">
+
+                <div class="slideshow-container">
+
+                    <img src="../pics/k1.png" alt="Song Cover 1" class="slideshow-image active">
+
+                    <img src="../pics/k2.png" alt="Song Cover 2" class="slideshow-image">
+
+                    
+
+                    <button class="slide-btn prev-btn" onclick="changeSlide2(-1)">❮</button>
+
+                    <button class="slide-btn next-btn" onclick="changeSlide2(1)">❯</button>
+
+                    
+
+                    <div class="dots-container">
+
+                        <span class="dot active" onclick="setSlide2(0)"></span>
+
+                        <span class="dot" onclick="setSlide2(1)"></span>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div class="service-content">
+
+                    <h2 class="service-title">Song Cover Service</h2>
+
+                    <p class="limited-deal">Special Offer</p>
+
+                    <p class="service-description">
+
+                        Professional song covers with high-quality audio recording and mixing. Choose your favorite song!
+
+                    </p>
+
+                    <div class="price-tag">₱50-150 only!</div>
+
+                    <button class="get-offer-btn" onclick="window.location.href='https://www.facebook.com/messages/t/435891166284827'">Get This Offer</button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Third card (Robux promo card) -->
+
+            <div class="pink-service-card">
+
+                <div class="slideshow-container">
+
+                    <img src="../pics/r1.jpg" alt="Robux Promo 1" class="slideshow-image active" style="height: 150px; object-fit: contain; padding: 10px;">
+
+                    <img src="../pics/r2.jpg" alt="Robux Promo 2" class="slideshow-image" style="height: 150px; object-fit: contain; padding: 10px;">
+
+                    <img src="../pics/r3.jpg" alt="Robux Promo 3" class="slideshow-image" style="height: 150px; object-fit: contain; padding: 10px;">
+
+                    <img src="../pics/r1.jpg" alt="Robux Promo 4" class="slideshow-image" style="height: 150px; object-fit: contain; padding: 10px;">
+
+                    
+
+                    <button class="slide-btn prev-btn" onclick="changeSlide3(-1)">❮</button>
+
+                    <button class="slide-btn next-btn" onclick="changeSlide3(1)">❯</button>
+
+                    
+
+                    <div class="dots-container">
+
+                        <span class="dot active" onclick="setSlide3(0)"></span>
+
+                        <span class="dot" onclick="setSlide3(1)"></span>
+
+                        <span class="dot" onclick="setSlide3(2)"></span>
+
+                        <span class="dot" onclick="setSlide3(3)"></span>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div class="service-content">
+
+                    <h2 class="service-title">Robux Promo</h2>
+
+                    <p class="limited-deal">Special Offer!</p>
+
+                    <p class="service-description">
+
+                        Get your Robux at the cheapest prices! Safe and reliable transaction with instant delivery.
+
+                    </p>
+
+                    <div class="price-tag">₱40 = 100 Robux only!</div>
+                    <div class="price-tag">₱80 = 200 Robux only!</div>
+
+                    <a href="https://www.facebook.com/messages/t/435891166284827" 
+
+                       class="get-offer-btn" 
+
+                       target="_blank" 
+
+                       style="text-decoration: none; display: block;">
+
+                        Get This Offer
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Dynamic service grid -->
+
+        <div class="service-grid" id="serviceGrid"></div>
+
+    </div>
+
+
+
+    <script>
+
+  
+
+
+
+        // Add these new functions for the slideshow
+
+        let currentSlide = 0;
+
+        const slides = document.getElementsByClassName("slideshow-container")[0].getElementsByClassName("slideshow-image");
+
+        const dots = document.getElementsByClassName("slideshow-container")[0].getElementsByClassName("dot");
+
+
+
+        function showSlide(n) {
+
+            // Reset current slide
+
+            for (let i = 0; i < slides.length; i++) {
+
+                slides[i].classList.remove('active');
+
+                dots[i].classList.remove('active');
+
+            }
+
+            
+
+            // Set new slide
+
+            currentSlide = (n + slides.length) % slides.length;
+
+            slides[currentSlide].classList.add('active');
+
+            dots[currentSlide].classList.add('active');
+
+        }
+
+
+
+        function changeSlide(n) {
+
+            showSlide(currentSlide + n);
+
+        }
+
+
+
+        function setSlide(n) {
+
+            showSlide(n);
+
+        }
+
+
+
+        // Auto advance slides every 5 seconds
+
+        setInterval(() => changeSlide(1), 5000);
+
+
+
+        // Add these functions for the second slideshow
+
+        let currentSlide2 = 0;
+
+        const slides2 = document.getElementsByClassName("slideshow-container")[1].getElementsByClassName("slideshow-image");
+
+        const dots2 = document.getElementsByClassName("slideshow-container")[1].getElementsByClassName("dot");
+
+
+
+        function showSlide2(n) {
+
+            // Reset current slide
+
+            for (let i = 0; i < slides2.length; i++) {
+
+                slides2[i].classList.remove('active');
+
+                dots2[i].classList.remove('active');
+
+            }
+
+            
+
+            // Set new slide
+
+            currentSlide2 = (n + slides2.length) % slides2.length;
+
+            slides2[currentSlide2].classList.add('active');
+
+            dots2[currentSlide2].classList.add('active');
+
+        }
+
+
+
+        function changeSlide2(n) {
+
+            showSlide2(currentSlide2 + n);
+
+        }
+
+
+
+        function setSlide2(n) {
+
+            showSlide2(n);
+
+        }
+
+
+
+        // Auto advance slides every 5 seconds for second slideshow
+
+        setInterval(() => changeSlide2(1), 5000);
+
+
+
+        // Add these functions for the third slideshow
+
+        let currentSlide3 = 0;
+
+        const slides3 = document.getElementsByClassName("slideshow-container")[2].getElementsByClassName("slideshow-image");
+
+        const dots3 = document.getElementsByClassName("slideshow-container")[2].getElementsByClassName("dot");
+
+
+
+        function showSlide3(n) {
+
+            // Reset current slide
+
+            for (let i = 0; i < slides3.length; i++) {
+
+                slides3[i].classList.remove('active');
+
+                dots3[i].classList.remove('active');
+
+            }
+
+            
+
+            // Set new slide
+
+            currentSlide3 = (n + slides3.length) % slides3.length;
+
+            slides3[currentSlide3].classList.add('active');
+
+            dots3[currentSlide3].classList.add('active');
+
+        }
+
+
+
+        function changeSlide3(n) {
+
+            showSlide3(currentSlide3 + n);
+
+        }
+
+
+
+        function setSlide3(n) {
+
+            showSlide3(n);
+
+        }
+
+
+
+        // Auto advance slides every 5 seconds for third slideshow
+
+        setInterval(() => changeSlide3(1), 5000);
+
+    </script>
+
+</body>
+
+</html>
+
+

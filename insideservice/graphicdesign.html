@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="../pics/logo.png" sizes="16x16">
+
+<link rel="icon" type="image/png" href="../pics/logo.png" sizes="32x32">
+
+<link rel="icon" type="image/png" href="../pics/logo.png" sizes="96x96">
+
+<link rel="apple-touch-icon" href="../pics/logo.png">
+
+    <title>Graphic Design Services - SkillSwap</title>
+
+    <style>
+
+        :root {
+
+            --bg-gradient-light: linear-gradient(to top, violet, white);
+
+            --text-color-light: rgb(75, 75, 75);
+
+            --glass-bg-light: rgba(255, 255, 255, 0.9);
+
+        }
+
+
+
+        body {
+
+            background: var(--bg-gradient-light);
+
+            min-height: 100vh;
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            padding: 0;
+
+        }
+
+
+
+        /* Navigation Styles */
+
+        .navbar {
+
+            background: rgba(255, 255, 255, 0.9);
+
+            padding: 1rem;
+
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+        }
+
+
+
+        .nav-content {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+
+
+        .logo-container {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 1rem;
+
+        }
+
+
+
+        .logo {
+
+            width: 50px;
+
+            height: auto;
+
+        }
+
+
+
+        .nav-links {
+
+            display: flex;
+
+            gap: 2rem;
+
+        }
+
+
+
+        .nav-links a {
+
+            text-decoration: none;
+
+            color: var(--text-color-light);
+
+            font-weight: 500;
+
+            transition: color 0.3s ease;
+
+        }
+
+
+
+        .nav-links a:hover {
+
+            color: violet;
+
+        }
+
+
+
+        /* Existing service styles */
+
+        .services-container {
+
+            max-width: 1200px;
+
+            margin: 2rem auto;
+
+            padding: 20px;
+
+        }
+
+
+
+        .service-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+            gap: 20px;
+
+            margin-top: 20px;
+
+        }
+
+
+
+        .service-card {
+
+            background: rgba(255, 255, 255, 0.2);
+
+            backdrop-filter: blur(10px);
+
+            -webkit-backdrop-filter: blur(10px);
+
+            border: 1px solid rgba(255, 255, 255, 0.3);
+
+            transition: all 0.3s ease;
+
+        }
+
+
+
+        .service-media img {
+
+            width: 100%;
+
+            height: 200px;
+
+            object-fit: cover;
+
+            border-radius: 10px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+
+        .order-btn {
+
+            background: rgba(238, 130, 238, 0.6);
+
+            color: white;
+
+            padding: 10px 20px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            width: 100%;
+
+            margin-top: 15px;
+
+            transition: all 0.3s ease;
+
+        }
+
+
+
+        .order-btn:hover {
+
+            background: rgba(238, 130, 238, 0.8);
+
+        }
+
+
+
+        /* Hover effects for buttons */
+
+        .order-btn {
+
+            transition: all 0.3s ease;
+
+        }
+
+
+
+        .order-btn:hover {
+
+            background: rgba(238, 130, 238, 0.8);
+
+            transform: translateY(-2px);
+
+        }
+
+
+
+        /* Service card hover effect */
+
+        .service-card {
+
+            transition: transform 0.3s ease;
+
+        }
+
+
+
+        .service-card:hover {
+
+            transform: translateY(-5px);
+
+        }
+
+
+
+        /* Add these new styles */
+
+        .buddy-profile {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+
+        .profile-image {
+
+            width: 60px;
+
+            height: 60px;
+
+            border-radius: 50%;
+
+            object-fit: cover;
+
+        }
+
+
+
+        .profile-info h3 {
+
+            margin: 0;
+
+            font-size: 1.2rem;
+
+        }
+
+
+
+        .service-title {
+
+            margin: 5px 0;
+
+            color: #666;
+
+        }
+
+
+
+        .service-details {
+
+            text-align: left;
+
+        }
+
+
+
+        .description {
+
+            margin: 10px 0;
+
+            line-height: 1.5;
+
+        }
+
+
+
+        .service-categories {
+
+            margin: 10px 0;
+
+        }
+
+
+
+        .service-category {
+
+            background: rgba(238, 130, 238, 0.1);
+
+            padding: 5px 10px;
+
+            border-radius: 15px;
+
+            font-size: 0.9rem;
+
+        }
+
+
+
+        .service-meta {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-top: 15px;
+
+        }
+
+
+
+        .price {
+
+            font-size: 1.2rem;
+
+            font-weight: bold;
+
+            color: #4CAF50;
+
+        }
+
+
+
+        .contact-btn {
+
+            background: #FF59F8;
+
+            transition: all 0.3s ease;
+
+        }
+
+
+
+        .contact-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 5px 15px rgba(255, 89, 248, 0.5);
+
+        }
+
+
+
+        .no-services {
+
+            text-align: center;
+
+            color: #666;
+
+            font-style: italic;
+
+            grid-column: 1 / -1;
+
+            padding: 20px;
+
+        }
+
+
+
+       
+
+
+
+        .service-card:first-child {
+
+            background: rgba(255, 255, 255, 0.2);
+
+            backdrop-filter: blur(10px);
+
+            -webkit-backdrop-filter: blur(10px);
+
+            border: 1px solid rgba(255, 255, 255, 0.3);
+
+            transition: all 0.3s ease;
+
+        }
+
+
+
+        .service-card:first-child:hover {
+
+            transform: translateY(-5px);
+
+            background: rgba(0, 0, 0, 0.7);
+
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3),
+
+                        inset 0 0 20px rgba(255, 255, 255, 0.1);
+
+        }
+
+
+
+        .service-card:first-child:hover .profile-info h3,
+
+        .service-card:first-child:hover .description,
+
+        .service-card:first-child:hover .service-title {
+
+            color: white;
+
+        }
+
+
+
+        .service-card:first-child .contact-btn {
+
+            background: linear-gradient(135deg, rgba(238, 130, 238, 0.8), rgba(156, 39, 176, 0.8));
+
+            color: white;
+
+            border: none;
+
+            padding: 12px 24px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+
+            transition: all 0.3s ease;
+
+        }
+
+
+
+        .service-card:first-child:hover .contact-btn {
+
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+
+            color: black;
+
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+
+        }
+
+
+
+        .service-card {
+
+            background: rgba(255, 255, 255, 0.2);
+
+            backdrop-filter: blur(10px);
+
+            -webkit-backdrop-filter: blur(10px);
+
+            border: 1px solid rgba(255, 255, 255, 0.3);
+
+            transition: all 0.3s ease;
+
+        }
+
+
+
+        .service-card:hover {
+
+            transform: translateY(-5px);
+
+            background: rgba(47, 0, 71, 0.9);
+
+            box-shadow: 0 0 20px rgba(89, 0, 255, 0.3),
+
+                        inset 0 0 20px rgba(255, 255, 255, 0.1);
+
+        }
+
+
+
+        .service-card:hover h3,
+
+        .service-card:hover p,
+
+        .service-card:hover .service-description p {
+
+            color: white !important;
+
+        }
+
+
+
+        .service-media img {
+
+            transition: transform 0.3s ease;
+
+        }
+
+
+
+        .service-card:hover .service-media img {
+
+            transform: scale(1.02);
+
+        }
+
+
+
+        .contact-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 5px 15px rgba(189, 75, 229, 0.3);
+
+        }
+
+
+
+        /* Add these styles to your existing CSS */
+
+        .slideshow-container {
+
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+            background: black;
+
+        }
+
+
+
+        .slide {
+
+            z-index: 1;
+
+        }
+
+
+
+        .service-card {
+
+            background: rgba(255, 255, 255, 0.95);
+
+            border-radius: 15px;
+
+            overflow: hidden;
+
+            transition: transform 0.3s ease;
+
+        }
+
+
+
+        .service-card:hover {
+
+            transform: translateY(-5px);
+
+        }
+
+
+
+        .contact-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 5px 15px rgba(189, 75, 229, 0.3);
+
+        }
+
+
+
+        .service-card {
+
+            background: rgba(255, 255, 255, 0.2);
+
+            backdrop-filter: blur(10px);
+
+            -webkit-backdrop-filter: blur(10px);
+
+            border: 1px solid rgba(255, 255, 255, 0.3);
+
+            transition: all 0.3s ease;
+
+        }
+
+
+
+        .service-card:hover {
+
+            transform: translateY(-5px);
+
+            background: rgba(47, 0, 71, 0.9);
+
+            box-shadow: 0 0 20px rgba(89, 0, 255, 0.3),
+
+                        inset 0 0 20px rgba(255, 255, 255, 0.1);
+
+        }
+
+
+
+        .service-card:hover h3,
+
+        .service-card:hover p {
+
+            color: white !important;
+
+        }
+
+
+
+        .service-card:hover .contact-btn {
+
+            background: #FF59F8;
+
+            color: white;
+
+            box-shadow: 0 0 15px rgba(255, 89, 248, 0.3);
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+
+    <nav class="navbar">
+
+        <div class="nav-content">
+
+            <div class="logo-container">
+
+                <img src="/pics/logo.png" alt="SkillSwap Logo" class="logo">
+
+                <h1>SKILLSWAP</h1>
+
+            </div>
+
+            <div class="nav-links">
+
+                <a href="../index.html">Home</a>
+
+                <a href="../service.html">Services</a>
+
+                <a href="../about.html">About</a>
+
+                <a href="../contact.html">Contact</a>
+
+                <div class="user-profile" style="margin-left: 20px; position: relative;">
+
+                    <img src="../pics/7 (21).png" 
+
+                         alt="Profile" 
+
+                         style="width: 32px; height: 32px; border-radius: 50%; cursor: pointer;"
+
+                         onmouseover="showDropdown()" 
+
+                         onmouseout="hideDropdown()">
+
+                    <div id="profileDropdown" 
+
+                         style="display: none; position: absolute; right: 0; top: 40px; 
+
+                                background: white; padding: 10px; border-radius: 8px; 
+
+                                box-shadow: 0 2px 5px rgba(0,0,0,0.2); min-width: 120px;">
+
+                        <span id="currentUser" style="display: block; margin-bottom: 8px; color: #666;"></span>
+
+                        <button onclick="logout()" 
+
+                                style="background: #ff4444; color: white; border: none; 
+
+                                       padding: 8px 15px; border-radius: 5px; cursor: pointer; 
+
+                                       width: 100%;">
+
+                            Logout
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <div class="services-container">
+
+        <h2>Graphic Design Services</h2>
+
+        <div class="service-grid" id="serviceGrid"></div>
+
+    </div>
+
+
+
+    <script>
+
+        const promoCard = `
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; grid-column: 1 / -1; margin: 0 auto 20px auto;">
+
+                <!-- First Card -->
+
+                <div class="service-card" style="max-width: 400px; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 15px; overflow: hidden; transition: all 0.3s ease;">
+
+                    <div class="service-media" style="position: relative;">
+
+                        <div class="slideshow-container" style="position: relative; height: 250px; overflow: hidden; cursor: pointer;" onclick="openFullscreenSlideshow()">
+
+                            <img class="slide" src="../pics/7 (21).png" alt="Recent Project 1" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;">
+
+                            <img class="slide" src="../pics/8 (6).png" alt="Recent Project 2" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;">
+
+                            <img class="slide" src="../pics/9 (5).png" alt="Recent Project 3" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;">
+
+                            <img class="slide" src="../pics/10 (4).png" alt="Recent Project 4" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;">
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="service-content" style="text-align: center; padding: 15px;">
+
+                        <h3 style="font-size: 20px; color: #333; margin: 0; transition: color 0.3s ease;">Graphic Designer - Special Offer!</h3>
+
+                        <p style="color: #666; margin: 5px 0; font-size: 14px; transition: color 0.3s ease;">Limited Time Deal</p>
+
+                        
+
+                        <p style="font-size: 14px; line-height: 1.4; color: #444; margin: 10px 0; transition: color 0.3s ease;">
+
+                            Professional graphic design services for only ₱60! Transform your ideas into stunning visuals. Perfect for social media content, personal memories, and business promotions.
+
+                        </p>
+
+
+
+                        <div style="margin: 15px 0;">
+
+                            <span style="font-size: 20px; font-weight: bold; color: #4CAF50; transition: color 0.3s ease;">₱60 only!</span>
+
+                        </div>
+
+
+
+                        <button class="contact-btn" onclick="window.location.href='https://www.facebook.com/messages/t/435891166284827'" 
+
+
+                                style="padding: 10px 20px; font-size: 1rem; background: #FF59F8; color: white; border: none; border-radius: 25px; cursor: pointer; transition: all 0.3s ease; width: 100%; max-width: 180px;">
+
+                            Get This Offer
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Second Card (Duplicate with different content) -->
+
+                <div class="service-card" style="max-width: 400px; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 15px; overflow: hidden; transition: all 0.3s ease;">
+
+                    <div class="service-media" style="position: relative;">
+
+                        <div class="slideshow-container" style="position: relative; height: 250px; overflow: hidden; cursor: pointer;" onclick="openFullscreenSlideshow()">
+
+                            <img class="slide2" src="../pics/jm1.jpg" alt="Recent Project 1" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;">
+
+                            <img class="slide2" src="../pics/jm2.jpg" alt="Recent Project 2" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;">
+
+                            <img class="slide2" src="../pics/jm3.jpg" alt="Recent Project 3" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;">
+
+                            <img class="slide2" src="../pics/jm4.jpg" alt="Recent Project 4" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;">
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="service-content" style="text-align: center; padding: 15px;">
+
+                        <h3 style="font-size: 20px; color: #333; margin: 0; transition: color 0.3s ease;">Graphic Designer - Special Offer!</h3>
+
+                        <p style="color: #666; margin: 5px 0; font-size: 14px; transition: color 0.3s ease;">Limited Time Deal</p>
+
+                        
+
+                        <p style="font-size: 14px; line-height: 1.4; color: #444; margin: 10px 0; transition: color 0.3s ease;">
+
+                            Professional graphic design services for only ₱60! Transform your ideas into stunning visuals. Perfect for social media content, personal memories, and business promotions.
+
+                        </p>
+
+
+
+                        <div style="margin: 15px 0;">
+
+                            <span style="font-size: 20px; font-weight: bold; color: #4CAF50; transition: color 0.3s ease;">₱60 only!</span>
+
+                        </div>
+
+
+
+                        <button class="contact-btn" onclick="window.location.href='https://www.facebook.com/messages/t/435891166284827'" 
+
+
+                                style="padding: 10px 20px; font-size: 1rem; background: #FF59F8; color: white; border: none; border-radius: 25px; cursor: pointer; transition: all 0.3s ease; width: 100%; max-width: 180px;">
+
+                            Get This Offer
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Third Card -->
+
+                <div class="service-card" style="max-width: 400px; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 15px; overflow: hidden; transition: all 0.3s ease;">
+
+                    <div class="service-media" style="position: relative;">
+
+                        <div class="slideshow-container" style="position: relative; height: 250px; overflow: hidden; cursor: pointer;" onclick="openFullscreenSlideshow()">
+
+                            <img class="slide3" src="../pics/g1.jpg" alt="Recent Project 1" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;">
+
+                            <img class="slide3" src="../pics/g2.jpg" alt="Recent Project 2" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;">
+
+                            <img class="slide3" src="../pics/g3.jpg" alt="Recent Project 3" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;">
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="service-content" style="text-align: center; padding: 15px;">
+
+                        <h3 style="font-size: 20px; color: #333; margin: 0; transition: color 0.3s ease;">Graphic Design Specialist</h3>
+
+                        <p style="color: #666; margin: 5px 0; font-size: 14px; transition: color 0.3s ease;">Professional Graphic Design</p>
+
+                        
+
+                        <p style="font-size: 14px; line-height: 1.4; color: #444; margin: 10px 0; transition: color 0.3s ease;">
+
+                            Graphic Design and Digital Drawing
+Art done in digital devices, capturing desired emotions and moments that need be portrayed. Done via Photoshop and IbisPaintX respectively
+
+                        </p>
+
+
+
+                        <div style="margin: 15px 0;">
+
+                            <span style="font-size: 20px; font-weight: bold; color: #4CAF50; transition: color 0.3s ease;">₱100-300 (negotiable) only!</span>
+
+                        </div>
+
+
+
+                        <button class="contact-btn" onclick="window.location.href='https://www.facebook.com/messages/t/435891166284827'" 
+
+
+                                style="padding: 10px 20px; font-size: 1rem; background: #FF59F8; color: white; border: none; border-radius: 25px; cursor: pointer; transition: all 0.3s ease; width: 100%; max-width: 180px;">
+
+                            Get This Offer
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Fourth Card -->
+
+                <div class="service-card" style="max-width: 400px; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 15px; overflow: hidden; transition: all 0.3s ease;">
+
+                    <div class="service-media" style="position: relative;">
+
+                        <div class="slideshow-container" style="position: relative; height: 250px; overflow: hidden; cursor: pointer;" onclick="openFullscreenSlideshow()">
+
+                            <img class="slide4" src="../pics/w1.jpg" alt="Recent Project 1" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;">
+
+                            <img class="slide4" src="../pics/w2.jpg" alt="Recent Project 2" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;">
+
+                            <img class="slide4" src="../pics/w3.jpg" alt="Recent Project 3" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;">
+
+                            <img class="slide4" src="../pics/w4.jpg" alt="Recent Project 4" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;">
+
+                            <img class="slide4" src="../pics/w5.jpg" alt="Recent Project 5" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;">
+
+                            <img class="slide4" src="../pics/w6.jpg" alt="Recent Project 6" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;">
+
+                            <img class="slide4" src="../pics/w7.jpg" alt="Recent Project 7" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;">
+
+                            <img class="slide4" src="../pics/w8.jpg" alt="Recent Project 8" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;">
+
+                            <img class="slide4" src="../pics/w9.jpg" alt="Recent Project 9" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;">
+
+                            <img class="slide4" src="../pics/w10.jpg" alt="Recent Project 10" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;">
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="service-content" style="text-align: center; padding: 15px;">
+
+                        <h3 style="font-size: 20px; color: #333; margin: 0; transition: color 0.3s ease;">Digital Art Specialist</h3>
+
+                        <p style="color: #666; margin: 5px 0; font-size: 14px; transition: color 0.3s ease;">Professional Digital Artwork</p>
+
+                        
+
+                        <p style="font-size: 14px; line-height: 1.4; color: #444; margin: 10px 0; transition: color 0.3s ease;">
+
+                            Digital Illustrations/Concept arts
+                            I can do anime and semi realism
+                            Can do gacha style :>>
+
+                        </p>
+
+
+
+                        <div style="margin: 15px 0;">
+
+                            <span style="font-size: 20px; font-weight: bold; color: #4CAF50; transition: color 0.3s ease;">₱150-500 (negotiable)</span>
+
+                        </div>
+
+
+
+                        <button class="contact-btn" onclick="window.location.href='https://www.facebook.com/messages/t/435891166284827'" 
+
+
+                                style="padding: 10px 20px; font-size: 1rem; background: #FF59F8; color: white; border: none; border-radius: 25px; cursor: pointer; transition: all 0.3s ease; width: 100%; max-width: 180px;">
+
+                            Get This Offer
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Add this after the fourth card, before the closing div -->
+
+                <div class="service-card" style="max-width: 400px; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 15px; overflow: hidden; transition: all 0.3s ease;">
+
+                    <div class="service-media" style="position: relative;">
+
+                        <div class="slideshow-container" style="position: relative; height: 250px; overflow: hidden; cursor: pointer;" onclick="openFullscreenSlideshow()">
+
+                            <img class="slide5" src="../pics/k1.jpg" alt="Recent Project 1" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;">
+
+                            <img class="slide5" src="../pics/k2.jpg" alt="Recent Project 2" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;">
+
+                            <img class="slide5" src="../pics/k3.jpg" alt="Recent Project 3" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;">
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="service-content" style="text-align: center; padding: 15px;">
+
+                        <h3 style="font-size: 20px; color: #333; margin: 0; transition: color 0.3s ease;">Logo Design Specialist</h3>
+
+                        <p style="color: #666; margin: 5px 0; font-size: 14px; transition: color 0.3s ease;">Traditional Art Design</p>
+
+                        
+
+                        <p style="font-size: 14px; line-height: 1.4; color: #444; margin: 10px 0; transition: color 0.3s ease;">
+
+                             I can draw portraits for you guys hehe.
+
+                        </p>
+
+
+
+                        <div style="margin: 15px 0;">
+
+                            <span style="font-size: 20px; font-weight: bold; color: #4CAF50; transition: color 0.3s ease;">₱100-500 (negotiable)</span>
+
+                        </div>
+
+
+
+                        <button class="contact-btn" onclick="window.location.href='https://www.facebook.com/messages/t/435891166284827'" 
+
+
+                                style="padding: 10px 20px; font-size: 1rem; background: #FF59F8; color: white; border: none; border-radius: 25px; cursor: pointer; transition: all 0.3s ease; width: 100%; max-width: 180px;">
+
+                            Get This Offer
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+
+        // Add this function for the slideshow
+
+        function startSlideshow() {
+
+            // First slideshow
+
+            const slides = document.querySelectorAll('.slide');
+
+            let currentSlide = 0;
+
+            
+
+            // Show first slide
+
+            slides[0].style.opacity = '1';
+
+            
+
+            setInterval(() => {
+
+                // Hide current slide
+
+                slides[currentSlide].style.opacity = '0';
+
+                
+
+                // Move to next slide
+
+                currentSlide = (currentSlide + 1) % slides.length;
+
+                
+
+                // Show new slide
+
+                slides[currentSlide].style.opacity = '1';
+
+            }, 3000);
+
+
+
+            // Second slideshow
+
+            const slides2 = document.querySelectorAll('.slide2');
+
+            let currentSlide2 = 0;
+
+            
+
+            // Show first slide
+
+            slides2[0].style.opacity = '1';
+
+            
+
+            setInterval(() => {
+
+                // Hide current slide
+
+                slides2[currentSlide2].style.opacity = '0';
+
+                
+
+                // Move to next slide
+
+                currentSlide2 = (currentSlide2 + 1) % slides2.length;
+
+                
+
+                // Show new slide
+
+                slides2[currentSlide2].style.opacity = '1';
+
+            }, 3000);
+
+
+
+            // Third slideshow
+
+            const slides3 = document.querySelectorAll('.slide3');
+
+            let currentSlide3 = 0;
+
+            
+
+            // Show first slide
+
+            slides3[0].style.opacity = '1';
+
+            
+
+            setInterval(() => {
+
+                // Hide current slide
+
+                slides3[currentSlide3].style.opacity = '0';
+
+                
+
+                // Move to next slide
+
+                currentSlide3 = (currentSlide3 + 1) % slides3.length;
+
+                
+
+                // Show new slide
+
+                slides3[currentSlide3].style.opacity = '1';
+
+            }, 3000);
+
+
+
+            // Fourth slideshow
+
+            const slides4 = document.querySelectorAll('.slide4');
+
+            let currentSlide4 = 0;
+
+            
+
+            // Show first slide
+
+            slides4[0].style.opacity = '1';
+
+            
+
+            setInterval(() => {
+
+                // Hide current slide
+
+                slides4[currentSlide4].style.opacity = '0';
+
+                
+
+                // Move to next slide
+
+                currentSlide4 = (currentSlide4 + 1) % slides4.length;
+
+                
+
+                // Show new slide
+
+                slides4[currentSlide4].style.opacity = '1';
+
+            }, 3000);
+
+
+
+            // Fifth slideshow
+
+            const slides5 = document.querySelectorAll('.slide5');
+
+            let currentSlide5 = 0;
+
+            
+
+            // Show first slide
+
+            slides5[0].style.opacity = '1';
+
+            
+
+            setInterval(() => {
+
+                // Hide current slide
+
+                slides5[currentSlide5].style.opacity = '0';
+
+                
+
+                // Move to next slide
+
+                currentSlide5 = (currentSlide5 + 1) % slides5.length;
+
+                
+
+                // Show new slide
+
+                slides5[currentSlide5].style.opacity = '1';
+
+            }, 3000);
+
+        }
+
+
+
+        // Modify your DOMContentLoaded event listener
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const serviceGrid = document.querySelector('.service-grid');
+
+            
+
+            // Insert the promo card first
+
+            serviceGrid.insertAdjacentHTML('afterbegin', promoCard);
+
+            
+
+            // Start the slideshow
+
+            startSlideshow();
+
+            
+
+            // Rest of your existing code...
+
+            const services = JSON.parse(localStorage.getItem('services')) || [];
+
+            const designServices = services.filter(service => 
+
+                service.serviceType === 'graphicDesign' && service.isActive
+
+            );
+
+            
+
+            if (!designServices || designServices.length === 0) {
+
+                return;
+
+            }
+
+            
+
+            // Add the rest of the services after the promo card
+
+            const servicesHTML = designServices.map(service => `
+
+                <div class="service-card" onclick="showServiceDetails('${service.userId}')">
+
+                    <div class="buddy-profile">
+
+                        <img src="${service.profileImage || '/pics/default-avatar.png'}" 
+
+                             alt="${service.username}" 
+
+                             class="profile-image">
+
+                        <div class="profile-info">
+
+                            <h3>${service.username}</h3>
+
+                            <p class="service-title">${service.title}</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="service-details">
+
+                        <p class="description">${service.description}</p>
+
+                        <div class="service-categories">
+
+                            <span class="service-category">${service.category}</span>
+
+                        </div>
+
+                        <div class="service-meta">
+
+                            <span class="price">$${service.price}/hr</span>
+
+                            <div style="position: relative;">
+
+                                <button class="contact-btn" onclick="event.stopPropagation(); messageProvider('${service.userId}')">
+
+                                    Message Designer
+
+                                </button>
+
+                                <span class="notification-badge" 
+
+                                      data-provider-id="${service.userId}" 
+
+                                      style="display: none;">
+
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `).join('');
+
+            
+
+            serviceGrid.insertAdjacentHTML('beforeend', servicesHTML);
+
+        });
+
+
+
+        function messageProvider(providerId) {
+
+            event.stopPropagation();
+
+            
+
+            // Find the provider's name from the services
+
+            const services = JSON.parse(localStorage.getItem('designServices')) || [];
+
+            const provider = services.find(service => service.userId === providerId);
+
+            const providerName = provider ? provider.username : 'Designer';
+
+            
+
+            // Create and show messaging modal
+
+            const messagingModal = document.createElement('div');
+
+            messagingModal.style.cssText = `
+
+                position: fixed;
+
+                top: 0;
+
+                left: 0;
+
+                width: 100%;
+
+                height: 100%;
+
+                background: rgba(0,0,0,0.5);
+
+                z-index: 2000;
+
+                display: flex;
+
+                justify-content: center;
+
+                align-items: center;
+
+            `;
+
+            
+
+            messagingModal.innerHTML = `
+
+                <div style="background: white; padding: 20px; border-radius: 12px; width: 90%; max-width: 500px;">
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+
+                        <h3 style="margin: 0;">Message ${providerName}</h3>
+
+                        <button onclick="closeMessageModal()" style="background: none; border: none; font-size: 20px; cursor: pointer;">×</button>
+
+                    </div>
+
+                    <input type="text" id="senderName" placeholder="Your Name" 
+
+                           style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px;">
+
+                    <textarea id="messageText" placeholder="Write your message to ${providerName}..." 
+
+                             style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px; min-height: 100px;"></textarea>
+
+                    <button onclick="sendMessage('${providerId}')" 
+
+                            style="background: #FF59F8; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; width: 100%;">
+
+                        Send Message to ${providerName}
+
+                    </button>
+
+                </div>
+
+            `;
+
+            
+
+            document.body.appendChild(messagingModal);
+
+        }
+
+
+
+        function closeMessageModal() {
+
+            const modal = document.querySelector('[style*="z-index: 2000"]');
+
+            if (modal) {
+
+                modal.remove();
+
+            }
+
+        }
+
+
+
+        function sendMessage(providerId) {
+
+            const senderName = document.getElementById('senderName').value.trim();
+
+            const messageText = document.getElementById('messageText').value.trim();
+
+            
+
+            if (!senderName || !messageText) {
+
+                alert('Please fill in all fields');
+
+                return;
+
+            }
+
+            
+
+            const message = {
+
+                id: Date.now(),
+
+                senderId: senderName,
+
+                recipientId: providerId,
+
+                text: messageText,
+
+                timestamp: new Date().toISOString(),
+
+                read: false,
+
+                isAnonymous: true
+
+            };
+
+            
+
+            const messages = JSON.parse(localStorage.getItem('messages')) || [];
+
+            messages.push(message);
+
+            localStorage.setItem('messages', JSON.stringify(messages));
+
+            
+
+            alert('Message sent successfully!');
+
+            closeMessageModal();
+
+        }
+
+
+
+        function updateNotificationCount(providerId) {
+
+            const notifications = JSON.parse(localStorage.getItem(`notifications_${providerId}`)) || [];
+
+            const unreadCount = notifications.filter(n => !n.isRead).length;
+
+            
+
+            const badge = document.querySelector(`[data-provider-id="${providerId}"] .notification-badge`);
+
+            if (badge) {
+
+                badge.textContent = unreadCount;
+
+                badge.style.display = unreadCount > 0 ? 'block' : 'none';
+
+            }
+
+        }
+
+
+
+        function showDropdown() {
+
+            document.getElementById('profileDropdown').style.display = 'block';
+
+            document.getElementById('currentUser').textContent = 
+
+                localStorage.getItem('currentUser') || 'User';
+
+        }
+
+
+
+        function hideDropdown() {
+
+            setTimeout(() => {
+
+                if (!document.getElementById('profileDropdown').matches(':hover')) {
+
+                    document.getElementById('profileDropdown').style.display = 'none';
+
+                }
+
+            }, 100);
+
+        }
+
+
+
+        function logout() {
+
+            if(confirm('Are you sure you want to logout?')) {
+
+                localStorage.removeItem('currentUser');
+
+                localStorage.removeItem('userType');
+
+                window.location.href = '../index.html';
+
+            }
+
+        }
+
+
+
+        // Add this function to handle fullscreen slideshow
+
+        function openFullscreenSlideshow() {
+
+            const fullscreenModal = document.createElement('div');
+
+            fullscreenModal.style.cssText = `
+
+                position: fixed;
+
+                top: 0;
+
+                left: 0;
+
+                width: 100%;
+
+                height: 100%;
+
+                background: rgba(0,0,0,0.95);
+
+                z-index: 3000;
+
+                display: flex;
+
+                justify-content: center;
+
+                align-items: center;
+
+            `;
+
+
+
+            const images = [
+
+                '../pics/7 (21).png',
+
+                '../pics/8 (5).png',
+
+                '../pics/9 (5).png',
+
+                '../pics/10 (4).png'
+
+            ];
+
+
+
+            fullscreenModal.innerHTML = `
+
+                <div class="fullscreen-slideshow" style="position: relative; width: 100%; height: 100%;">
+
+                    ${images.map(src => `
+
+                        <img class="fullscreen-slide" src="${src}" 
+
+                             style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+
+                                    max-width: 90%; max-height: 90vh; opacity: 0; transition: opacity 0.5s ease;">
+
+                    `).join('')}
+
+                    <button onclick="closeFullscreenSlideshow()" 
+
+                            style="position: absolute; top: 20px; right: 20px; background: none; border: none; 
+
+                                   color: white; font-size: 30px; cursor: pointer; z-index: 3001;">×</button>
+
+                    <button onclick="prevSlide()" 
+
+                            style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); 
+
+                                   background: none; border: none; color: white; font-size: 30px; cursor: pointer;">❮</button>
+
+                    <button onclick="nextSlide()" 
+
+                            style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); 
+
+                                   background: none; border: none; color: white; font-size: 30px; cursor: pointer;">❯</button>
+
+                </div>
+
+            `;
+
+
+
+            document.body.appendChild(fullscreenModal);
+
+            startFullscreenSlideshow();
+
+        }
+
+
+
+        // Add these functions to control the fullscreen slideshow
+
+        let fullscreenCurrentSlide = 0;
+
+        let fullscreenInterval;
+
+
+
+        function startFullscreenSlideshow() {
+
+            const slides = document.querySelectorAll('.fullscreen-slide');
+
+            slides[0].style.opacity = '1';
+
+            
+
+            fullscreenInterval = setInterval(() => {
+
+                nextSlide();
+
+            }, 3000);
+
+        }
+
+
+
+        function nextSlide() {
+
+            const slides = document.querySelectorAll('.fullscreen-slide');
+
+            slides[fullscreenCurrentSlide].style.opacity = '0';
+
+            fullscreenCurrentSlide = (fullscreenCurrentSlide + 1) % slides.length;
+
+            slides[fullscreenCurrentSlide].style.opacity = '1';
+
+        }
+
+
+
+        function prevSlide() {
+
+            const slides = document.querySelectorAll('.fullscreen-slide');
+
+            slides[fullscreenCurrentSlide].style.opacity = '0';
+
+            fullscreenCurrentSlide = (fullscreenCurrentSlide - 1 + slides.length) % slides.length;
+
+            slides[fullscreenCurrentSlide].style.opacity = '1';
+
+        }
+
+
+
+        function closeFullscreenSlideshow() {
+
+            clearInterval(fullscreenInterval);
+
+            const modal = document.querySelector('[style*="z-index: 3000"]');
+
+            if (modal) {
+
+                modal.remove();
+
+            }
+
+            fullscreenCurrentSlide = 0;
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+
+

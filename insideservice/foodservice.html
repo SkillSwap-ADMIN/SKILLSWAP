@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../pics/logo.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="../pics/logo.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="../pics/logo.png" sizes="96x96">
+    <link rel="apple-touch-icon" href="../pics/logo.png">
+    <title>Food Services - SkillSwap</title>
+    <style>
+        :root {
+            --bg-gradient-light: linear-gradient(to top, violet, white);
+            --text-color-light: rgb(75, 75, 75);
+            --glass-bg-light: rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            background: var(--bg-gradient-light);
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            padding: 0;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 2rem;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .service-card {
+            background: var(--glass-bg-light);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .service-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .service-info h3 {
+            color: #333;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .service-card:hover h3 {
+            color: #6a1b9a;
+        }
+
+        .service-info p {
+            color: #666;
+            margin: 5px 0;
+            font-size: 1.1em;
+        }
+
+        ul {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 15px 25px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover ul {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.02);
+        }
+
+        li {
+            font-size: 1.2em;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        li:hover {
+            transform: translateX(10px);
+        }
+
+        .contact-btn {
+            background: linear-gradient(135deg, #9c27b0, #7b1fa2);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            width: 100%;
+            max-width: 200px;
+            margin: 20px auto;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: linear-gradient(135deg, #7b1fa2, #6a1b9a);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(156, 39, 176, 0.3);
+        }
+
+        /* Add Navigation Styles */
+        .navbar {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 50px;
+            height: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color-light, rgb(75, 75, 75));
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: violet;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo-container">
+                <img src="../pics/logo.png" alt="SkillSwap Logo" class="logo">
+                <h1>SKILLSWAP</h1>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../service.html">Services</a>
+                <a href="../about.html">About</a>
+                <a href="../contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Existing Services Container -->
+    <div class="services-container">
+        <h2>Food Services</h2>
+        <div class="service-card">
+            <div class="service-info">
+                <h3>Snacks & Refreshments</h3>
+                <p>Student Food Service</p>
+            </div>
+            <p style="text-align: center; color: #555; font-size: 1.1em; margin: 15px 0;">
+                Affordable snacks and refreshments for students! Choose from our selection:
+            </p>
+            <ul style="list-style: none; padding-left: 0; margin: 15px 0;">
+                <li>🍪 Munchkin - ₱5</li>
+                <li>🥪 Sandwich - ₱17</li>
+                <li>🥤 Fruit Soda - ₱30</li>
+            </ul>
+            <button class="contact-btn" onclick="window.open('https://www.facebook.com/messages/t/435891166284827', '_blank')">
+                Buy Now!
+            </button>
+        </div>
+    </div>
+</body>
+</html>

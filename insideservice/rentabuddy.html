@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../pics/logo.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="../pics/logo.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="../pics/logo.png" sizes="96x96">
+    <link rel="apple-touch-icon" href="../pics/logo.png">
+    <title>Rent a Buddy - SkillSwap</title>
+    <style>
+        :root {
+            --bg-gradient-light: linear-gradient(to top, violet, white);
+            --text-color-light: rgb(75, 75, 75);
+            --glass-bg-light: rgba(255, 255, 255, 0.9);
+        }
+
+        body {
+            background: var(--bg-gradient-light);
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            padding: 0;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 50px;
+            height: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color-light);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: violet;
+        }
+
+        /* Services Container */
+        .services-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 20px;
+        }
+
+        /* Glass Card Styles */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            padding: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 8px 32px rgba(31, 38, 135, 0.15),
+                0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            width: 280px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 
+                0 8px 32px rgba(31, 38, 135, 0.2),
+                0 4px 8px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Update the slideshow styles */
+        .slideshow-container {
+            width: 100%;
+            height: 180px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .slideshow-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        /* Specific style for l1.jpg */
+        .slideshow-image[src*="l1.jpg"] {
+            object-fit: cover;
+            object-position: center 35%;
+        }
+
+        /* Keep the brightness adjustment for l2 and l3 */
+        .slideshow-image[src*="l2.jpg"],
+        .slideshow-image[src*="l3.jpg"] {
+            filter: brightness(200%);
+        }
+
+        .slideshow-image.active {
+            opacity: 1;
+        }
+
+        .service-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            padding: 15px;
+            border-radius: 15px;
+        }
+
+        .service-title {
+            color: #1a1a1a;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .limited-deal {
+            color: #FF1493;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(255, 20, 147, 0.1);
+        }
+
+        .service-description {
+            color: #333;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .price-tag {
+            color: #1a1a1a;
+            font-weight: bold;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .get-offer-btn {
+            background: linear-gradient(45deg, #FF69B4, #FF1493);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .get-offer-btn:hover {
+            background: linear-gradient(45deg, #FF1493, #FF69B4);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+        }
+
+        /* Service Grid Styles */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Add all your existing CSS styles here */
+        /* ... (keep all the existing styles from before) ... */
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo-container">
+                <img src="../pics/logo.png" alt="SkillSwap Logo" class="logo">
+                <h1>SKILLSWAP</h1>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../service.html">Services</a>
+                <a href="../about.html">About</a>
+                <a href="../contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Services Container -->
+    <div class="services-container">
+        <h2>Rent a Buddy Services</h2>
+        <div class="service-grid" id="serviceGrid">
+            <!-- Photocard -->
+            <div class="glass-card">
+                <div class="slideshow-container">
+                    <img src="../pics/l1.jpg" alt="Man Photo 1" class="slideshow-image active">
+                    <img src="../pics/l2.jpg" alt="Man Photo 2" class="slideshow-image">
+                    <img src="../pics/l3.jpg" alt="Man Photo 3" class="slideshow-image">
+                </div>
+                
+                <div class="service-content">
+                    <h2 class="service-title">Lovable and Caring Man</h2>
+                    <p class="limited-deal">Limited Time Deal!</p>
+                    <p class="service-description">Good quality, good to love proven and tested. KASAMA MO SA LAHAT!</p>
+                    <div class="price-tag">Free - 60/per hour only!</div>
+                    <button class="get-offer-btn" onclick="window.location.href='https://www.facebook.com/messages/t/435891166284827'">Get This Hansome</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slideshow JavaScript -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.getElementsByClassName('slideshow-image');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            // Hide all slides
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove('active');
+            }
+            
+            // Show the current slide
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+        }
+
+        function changeSlide(n) {
+            showSlide(currentSlide + n);
+        }
+
+        // Show first slide initially
+        showSlide(0);
+
+        // Auto advance slides every 5 seconds
+        setInterval(() => changeSlide(1), 5000);
+
+        // Message Provider Function
+        function messageProvider(providerId) {
+            // Add your messaging functionality here
+            alert('Messaging functionality will be implemented soon!');
+        }
+    </script>
+</body>
+</html>
+

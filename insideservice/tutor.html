@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="../pics/logo.png" sizes="16x16">
+
+    <link rel="icon" type="image/png" href="../pics/logo.png" sizes="32x32">
+
+    <link rel="icon" type="image/png" href="../pics/logo.png" sizes="96x96">
+
+    <link rel="apple-touch-icon" href="../pics/logo.png">
+
+    <title>Tutoring Services - SkillSwap</title>
+
+    <style>
+
+        :root {
+
+            --bg-gradient-light: linear-gradient(to top, violet, white);
+
+            --text-color-light: rgb(75, 75, 75);
+
+            --glass-bg-light: rgba(255, 255, 255, 0.9);
+
+        }
+
+
+
+        body {
+
+            background: var(--bg-gradient-light);
+
+            min-height: 100vh;
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            padding: 0;
+
+        }
+
+
+
+        /* Navbar Styles */
+
+        .navbar {
+
+            background: rgba(255, 255, 255, 0.9);
+
+            padding: 1rem;
+
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+        }
+
+
+
+        .nav-content {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+
+
+        .logo-container {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 1rem;
+
+        }
+
+
+
+        .logo {
+
+            width: 50px;
+
+            height: auto;
+
+        }
+
+
+
+        .nav-links {
+
+            display: flex;
+
+            gap: 2rem;
+
+        }
+
+
+
+        .nav-links a {
+
+            text-decoration: none;
+
+            color: var(--text-color-light);
+
+            font-weight: 500;
+
+            transition: color 0.3s ease;
+
+        }
+
+
+
+        .nav-links a:hover {
+
+            color: violet;
+
+        }
+
+
+
+        /* Glass Card Styles */
+
+        .glass-card {
+
+            background: rgba(255, 255, 255, 0.15);
+
+            backdrop-filter: blur(10px);
+
+            -webkit-backdrop-filter: blur(10px);
+
+            border: 1px solid rgba(255, 255, 255, 0.2);
+
+            border-radius: 25px;
+
+            padding: 20px;
+
+            overflow: hidden;
+
+            transition: all 0.3s ease;
+
+            box-shadow: 
+
+                0 8px 32px rgba(31, 38, 135, 0.15),
+
+                0 4px 8px rgba(0, 0, 0, 0.1);
+
+            margin: 20px;
+
+            width: 280px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 15px;
+
+        }
+
+
+
+        .glass-card:hover {
+
+            transform: translateY(-5px);
+
+            background: rgba(0, 0, 0, 0.7);
+
+            box-shadow: 
+
+                0 0 15px rgba(0, 0, 0, 0.3),
+
+                0 0 30px rgba(0, 0, 0, 0.2),
+
+                0 0 45px rgba(0, 0, 0, 0.1);
+
+            border: 1px solid rgba(0, 0, 0, 0.3);
+
+        }
+
+
+
+        .glass-card:hover .service-title {
+
+            color: #fff;
+
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+
+        }
+
+
+
+        .glass-card:hover .service-description {
+
+            color: #e0e0e0;
+
+        }
+
+
+
+        .glass-card:hover .price-tag {
+
+            color: #fff;
+
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+
+        }
+
+
+
+        .glass-card:hover .get-offer-btn {
+
+            background: linear-gradient(45deg, #000000, #333333);
+
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+
+        }
+
+
+
+        .glass-card:hover .get-offer-btn:hover {
+
+            background: linear-gradient(45deg, #333333, #000000);
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+
+        }
+
+
+
+        .glass-card:hover .limited-deal {
+
+            color: #ff69b4;
+
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+
+        }
+
+
+
+        /* Slideshow Styles */
+
+        .slideshow-container {
+
+            width: 100%;
+
+            height: 180px;
+
+            border-radius: 15px;
+
+            overflow: hidden;
+
+            position: relative;
+
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+        }
+
+
+
+        .slideshow-image {
+
+            position: absolute;
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            opacity: 0;
+
+            transition: opacity 0.5s ease-in-out;
+
+        }
+
+
+
+        .slideshow-image.active {
+
+            opacity: 1;
+
+        }
+
+
+
+        /* Service Content Styles */
+
+        .service-content {
+
+            background: rgba(255, 255, 255, 0.1);
+
+            backdrop-filter: blur(5px);
+
+            -webkit-backdrop-filter: blur(5px);
+
+            padding: 15px;
+
+            border-radius: 15px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+
+        .service-title {
+
+            color: #1a1a1a;
+
+            font-weight: 600;
+
+            margin-bottom: 10px;
+
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+
+        }
+
+
+
+        .limited-deal {
+
+            color: #FF1493;
+
+            font-weight: 500;
+
+            margin: 5px 0;
+
+            text-shadow: 0 1px 2px rgba(255, 20, 147, 0.1);
+
+        }
+
+
+
+        .service-description {
+
+            color: #333;
+
+            font-size: 0.9rem;
+
+            line-height: 1.5;
+
+            margin: 10px 0;
+
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+        }
+
+
+
+        .price-tag {
+
+            color: #1a1a1a;
+
+            font-weight: bold;
+
+            margin: 10px 0 15px 0;
+
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+
+        }
+
+
+
+        .get-offer-btn {
+
+            background: linear-gradient(45deg, #FF69B4, #FF1493);
+
+            color: white;
+
+            border: none;
+
+            padding: 12px 25px;
+
+            border-radius: 25px;
+
+            font-size: 1em;
+
+            font-weight: 500;
+
+            cursor: pointer;
+
+            transition: all 0.3s ease;
+
+            width: calc(100% - 10px);
+
+            margin: 5px;
+
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+
+            text-align: center;
+
+            text-decoration: none;
+
+            display: block;
+
+        }
+
+
+
+        .get-offer-btn:hover {
+
+            background: linear-gradient(45deg, #FF1493, #FF69B4);
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+
+        }
+
+
+
+        /* Service Grid Styles */
+
+        .service-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+            gap: 20px;
+
+            padding: 20px;
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="navbar">
+
+        <div class="nav-content">
+
+            <div class="logo-container">
+
+                <img src="../pics/logo.png" alt="SkillSwap Logo" class="logo">
+
+                <h1>SKILLSWAP</h1>
+
+            </div>
+
+            <div class="nav-links">
+
+                <a href="../index.html">Home</a>
+
+                <a href="../service.html">Services</a>
+
+                <a href="../about.html">About</a>
+
+                <a href="../contact.html">Contact</a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- Services Container -->
+
+    <div class="services-container">
+
+        <h2>Tutoring Services</h2>
+
+        <div class="service-grid" id="serviceGrid">
+
+            <!-- Tutor Card -->
+
+            <div class="glass-card">
+
+                <div class="slideshow-container">
+
+                    <img src="../pics/t1.png" alt="Tutor Photo 1" class="slideshow-image active">
+
+                    <img src="../pics/t2.png" alt="Tutor Photo 2" class="slideshow-image">
+
+                    <img src="../pics/t3.png" alt="Tutor Photo 3" class="slideshow-image">
+
+                </div>
+
+                
+
+                <div class="service-content">
+
+                    <h2 class="service-title">Academic Essay Tutoring</h2>
+
+                    <p class="limited-deal">Limited Time Deal!</p>
+
+                    <p class="service-description">Tutoring academic works is about guiding students to excel in their studies, offering personalized support in assignments, projects, and exam prep to unlock their full potential.</p>
+
+                    <div class="price-tag">₱60-110 only!</div>
+
+                    <button class="get-offer-btn" onclick="window.location.href='https://www.facebook.com/messages/t/435891166284827'">
+
+                        Get This Tutor
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Add this after the first card, inside the service-grid div -->
+
+            <div class="glass-card">
+
+                <div class="slideshow-container">
+
+                    <img src="../pics/h1.png" alt="Tutor Photo 1" class="slideshow-image2 active">
+
+                    <img src="../pics/h2.png" alt="Tutor Photo 2" class="slideshow-image2">
+
+                    <img src="../pics/h3.png" alt="Tutor Photo 3" class="slideshow-image2">
+
+                </div>
+
+
+
+                <div class="service-content">
+
+                    <h2 class="service-title">Music Tutor (Bass Guitar, Acoustic Guitar, Electric Guitar, Drums)</h2>
+
+                    <p class="limited-deal">Special Offer!</p>
+
+                    <p class="service-description">Experienced music tutor offering personalized lessons in Bass Guitar, Acoustic Guitar, Electric Guitar, and Drums for beginner to average skill levels. Focused techniques and creative growth, helping students build confidence and achieve their musical goals with engaging, tailored lessons.</p>
+
+                    <div class="price-tag">₱75-100 per session</div>
+
+                    <button class="get-offer-btn" onclick="window.location.href='https://www.facebook.com/messages/t/435891166284827'">
+
+                        Get This Tutor
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Slideshow JavaScript -->
+
+    <script>
+
+        // First slideshow
+
+        let currentSlide = 0;
+
+        const slides = document.getElementsByClassName('slideshow-image');
+
+        const totalSlides = slides.length;
+
+
+
+        function showSlide(n) {
+
+            for (let i = 0; i < slides.length; i++) {
+
+                slides[i].classList.remove('active');
+
+            }
+
+            currentSlide = (n + totalSlides) % totalSlides;
+
+            slides[currentSlide].classList.add('active');
+
+        }
+
+
+
+        function changeSlide(n) {
+
+            showSlide(currentSlide + n);
+
+        }
+
+
+
+        // Second slideshow
+
+        let currentSlide2 = 0;
+
+        const slides2 = document.getElementsByClassName('slideshow-image2');
+
+        const totalSlides2 = slides2.length;
+
+
+
+        function showSlide2(n) {
+
+            for (let i = 0; i < slides2.length; i++) {
+
+                slides2[i].classList.remove('active');
+
+            }
+
+            currentSlide2 = (n + totalSlides2) % totalSlides2;
+
+            slides2[currentSlide2].classList.add('active');
+
+        }
+
+
+
+        function changeSlide2(n) {
+
+            showSlide2(currentSlide2 + n);
+
+        }
+
+
+
+        // Initialize both slideshows
+
+        showSlide(0);
+
+        showSlide2(0);
+
+
+
+        // Auto advance both slideshows every 5 seconds
+
+        setInterval(() => changeSlide(1), 5000);
+
+        setInterval(() => changeSlide2(1), 5000);
+
+    </script>
+
+</body>
+
+</html>
+
+
